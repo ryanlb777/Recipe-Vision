@@ -1,0 +1,64 @@
+<html>
+    <head>
+      <% include templates/googleVision.ejs %> 
+       <% include templates/includes.ejs %>
+       
+       </head>
+  <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+ 
+  
+    <% include templates/header.ejs %>
+    <script>
+ // check if user is logged in or not   
+//  console.log(getCookie("username"));
+//     if(!getCookie("username")) {
+//         window.location.replace("/userRegister");
+//     }
+    
+  </script>
+    
+    <div id="fileContainer">
+    <form id="fileform" action="">
+        
+        <select name="type">
+       <!-- <option value="LANDMARK_DETECTION">LANDMARK_DETECTION</option>
+        <option value="TYPE_UNSPECIFIED">TYPE_UNSPECIFIED</option>
+        <option value="FACE_DETECTION">FACE_DETECTION</option>
+        <option value="LOGO_DETECTION">LOGO_DETECTION</option>
+        
+        <option value="TEXT_DETECTION">TEXT_DETECTION</option>
+        <option value="SAFE_SEARCH_DETECTION">SAFE_SEARCH_DETECTION</option>
+        <option value="IMAGE_PROPERTIES">IMAGE_PROPERTIES</option> -->
+        <option value="LABEL_DETECTION">FOOD DETECTION</option>
+        </select><br />
+    
+    <input type="file"  name="fileField" id="fileChoose"><br /><br />
+    
+    <input type="submit" name="submit" value="Submit">
+    </form>
+    </div>
+    <style>
+        #fileContainer{
+            width:20em;
+            height:10em;
+            border:2px solid black;
+            margin:0 auto;
+            text-align:center;
+            padding:10px;
+        }
+        
+    </style>
+  
+         <!-- Block Loading Icon -->
+        <div id="wait2" style="display:none;width:69px;height:89px;position:absolute;top:50%;left:50%;padding:2px;"><img src="images/block.gif" alt="My_Logo"></div>
+
+        <div id="googleSpan"></div><br>
+     
+        <div id="oneSpan"></div><br>
+    
+      
+    <% include templates/footer.ejs %>
+</body>
+</html>

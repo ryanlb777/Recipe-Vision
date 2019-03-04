@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <!-- Include includes template -->
+    <% include templates/includes.ejs %>
+</head>
+<style>
+  h7{
+    color:red;
+    margin-bottom:1em;
+  }
+</style>
+<body>
+    <!-- Include header template -->
+    <% include templates/header.ejs %>
+    <% include templates/validation.ejs %>
+      <div id="registerBox">  
+     
+        <h3>Registration</h3>
+        <h7>Please register or login before using recipe vision</h7>
+        <fieldset>
+          <input placeholder="Firstname" id="firstName" tabindex="1" required autofocus>
+        </fieldset>
+               <fieldset>
+          <input placeholder="Lastname" id="lastName" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Username" id="usernameRegister" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Email" id="email" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+          <input type="password" placeholder="Password" id="passwordRegister" required>
+        </fieldset>
+           <fieldset>
+          <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
+        </fieldset>
+        <fieldset>
+          <button onclick="getRegistration()">Submit</button>
+        </fieldset>
+       
+  
+        </div>
+        
+        
+
+    <style>
+        #registerBox{
+            float:left;
+            display:block;
+            font-size:1em;
+        }
+    </style>
+
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+
+      
+ function getRegistration(){
+     
+        var firstName = document.getElementById("firstName");
+        var lastName = document.getElementById("lastName");
+        var username = document.getElementById("usernameRegister");
+        var email = document.getElementById("email");
+        var password = document.getElementById("passwordRegister");
+      //  var confirmPass = document.getElementById("confirmPass");
+       // var available = document.getElementById("available");
+      //  console.log(firstName);
+    //    console.log(username.value);
+      //  console.log(firstName.value);
+        var socket = io();
+        var test = "connected";
+        var parameters = { usernameParam:username.value , emailParam:email.value , passwordParam:password.value , firstNameParam:firstName.value , lastNameParam:lastName.value  };
+        console.log(parameters);
+        //alert("Store params");
+        socket.emit('initialize', parameters);
+        
+        
+        socket.on('chat', function(msg) {
+           // alert(msg);
+            
+        });
+        
+        $("#firstName").val('');
+        $("#lastName").val('');
+        $("#usernameRegister").val('');
+        $("#email").val('');
+        $("#confirmPassword").val('');
+        $("#passwordRegister").val('');
+      }
+    
+</script>  
+
+</body>
+
+<footer>
+        <!-- Include footer template -->
+    <% include templates/footer.ejs %>
+</footer>
+
+</html>
